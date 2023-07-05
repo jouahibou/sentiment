@@ -1,0 +1,24 @@
+version: '3'
+services:
+  api:
+    image: datascientest/fastapi:1.0.0
+    ports:
+      - "8000:8000"
+  authentication_test:
+    build:
+      context: .
+      dockerfile: Dockerfile.authentication
+    environment:
+      - LOG=1
+  authorization_test:
+    build:
+      context: .
+      dockerfile: Dockerfile.authorization
+    environment:
+      - LOG=1
+  content_test:
+    build:
+      context: .
+      dockerfile: Dockerfile.content
+    environment:
+      - LOG=1

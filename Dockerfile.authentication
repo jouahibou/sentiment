@@ -1,0 +1,12 @@
+FROM python:3.8
+
+# Copie du fichier requirements.txt
+COPY requirements.txt .
+
+# Installation des packages
+#RUN pip install -r requirements.txt
+
+# Copie du code source dans le conteneur
+COPY . .
+
+CMD ["python","./test_authentication.py"]

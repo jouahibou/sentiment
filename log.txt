@@ -1,0 +1,7 @@
+Attaching to authentication_authentication_test_1, authentication_api_1, authentication_authorization_test_1, authentication_content_test_1
+[33mauthentication_test_1  |[0m Traceback (most recent call last):
+[33mauthentication_test_1  |[0m   File "./test_authentication.py", line 2, in <module>
+[33mauthentication_test_1  |[0m     import requests
+[33mauthentication_test_1  |[0m ModuleNotFoundError: No module named 'requests'
+[33mauthentication_authentication_test_1 exited with code 1
+[0mAborting on container exit...
