@@ -1,24 +1,55 @@
 version: '3'
+
+networks:
+  my-network:
+    driver: bridge
+
 services:
   api:
     image: datascientest/fastapi:1.0.0
+    container_name: my-api-container
     ports:
       - "8000:8000"
+    networks:
+      - my-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
   authentication_test:
     build:
       context: .
       dockerfile: Dockerfile.authentication
     environment:
       - LOG=1
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      - my-network
+
   authorization_test:
     build:
       context: .
       dockerfile: Dockerfile.authorization
     environment:
       - LOG=1
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      - my-network
+
   content_test:
     build:
       context: .
       dockerfile: Dockerfile.content
     environment:
       - LOG=1
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      - my-network

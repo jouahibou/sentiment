@@ -1,7 +1,10 @@
 FROM python:3.8
 
+
 # Copie du fichier requirements.txt
 COPY requirements.txt .
+
+
 
 # Installation des packages
 RUN pip install -r requirements.txt
